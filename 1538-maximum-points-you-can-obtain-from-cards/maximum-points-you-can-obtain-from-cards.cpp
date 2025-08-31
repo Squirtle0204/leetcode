@@ -10,15 +10,9 @@ public:
         for(int i=k-1;i>=0;i--){
             lsum-=nums[i];
             rsum+=nums[rindex];
-            rindex--;
-            
+            rindex--;   
             maxsum=max(maxsum,lsum+rsum);
-
-
         }
        return maxsum;
-
-    }
-        
-    
+    }  
 };
