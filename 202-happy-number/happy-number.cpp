@@ -3,9 +3,9 @@ public:
     bool isHappy(int n) {
         unordered_set<int>seen;
         while(n!=1){
-            int sum=0;
             if(seen.count(n))return false;
             seen.insert(n);
+            int sum=0;
             while(n>0){
             int d=n%10;
             sum=sum+(d*d);
@@ -13,7 +13,6 @@ public:
         } 
         n=sum;
         }
-         
-        return true;
+          return true;
     }
 };
