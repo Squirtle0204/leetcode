@@ -4,7 +4,6 @@ public:
         solve(board);
         
     }
-
 bool solve(vector<vector<char>>& board){
     for(int row=0;row<board.size();row++){
         for(int col=0;col<board[0].size();col++){
