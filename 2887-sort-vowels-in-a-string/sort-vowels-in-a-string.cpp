@@ -1,35 +1,34 @@
 class Solution {
 public:
+bool isvowel(char ch){
+    ch= tolower(ch);
+    return (ch=='a'|| ch=='e'||ch=='i'||ch=='o'||ch=='u');
+
+}
     string sortVowels(string s) {
-        vector<int> upper(26, 0), lower(26, 0);
-        for (int i = 0; i < s.size(); i++) {
-            if (s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u') {
-                lower[s[i] - 'a']++;
-                s[i] = '#';
-            }
-            if (s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U') {
-                upper[s[i] - 'A']++;
-                s[i] = '#';
+        unordered_map<char,int>mp;
+
+        for(char ch: s){
+            if(isvowel(ch)){
+                mp[ch]++;
             }
         }
-        string ans;
-        for (int i = 0; i < 26; i++) {
-            char c = 'A' + i;
-            while (upper[i]--) ans += c;
-        }
-        for (int i = 0; i < 26; i++) {
-            char c = 'a' + i;
-            while (lower[i]--) ans += c;
-        }
-        // Reinserting vowels using first and second pointers
-        int first = 0, second = 0;
-        while (second < ans.size()) {
-            if (s[first] == '#') {
-                s[first] = ans[second];
-                second++;
+
+        string temp="AEIOUaeiou";
+        int j=0;
+
+        for(int i=0;i<s.size();i++){
+            if(isvowel(s[i])){
+                while(mp[temp[j]]==0){
+                    j++;
+                }
+
+                    s[i]=temp[j];
+                    mp[temp[j]]--;
+                
             }
-            first++;
         }
+
         return s;
     }
 };
