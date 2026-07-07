@@ -1,45 +1,43 @@
-#include <stack>
-using namespace std;
-
 class MyQueue {
-private:
-    stack<int> st1, st2;
-
 public:
-    MyQueue() = default;
-
+stack<int>s1,s2;
+    MyQueue() {
+        
+    }
+    
     void push(int x) {
-        st1.push(x);
+        
+        s1.push(x);
     }
-
+    
     int pop() {
-        if (st2.empty()) {
-            while (!st1.empty()) {
-                st2.push(st1.top());
-                st1.pop();
+        if(s2.empty()){
+            while(!s1.empty()){
+                s2.push(s1.top());
+                s1.pop();
             }
         }
-        if (st2.empty())
-            throw runtime_error("Queue is empty");
-        int val = st2.top();
-        st2.pop();
-        return val;
+        int el=s2.top();
+        s2.pop();
+        return el;
+        
     }
-
+    
     int peek() {
-        if (st2.empty()) {
-            while (!st1.empty()) {
-                st2.push(st1.top());
-                st1.pop();
+        if(s2.empty()){
+            while(!s1.empty()){
+                s2.push(s1.top());
+                    s1.pop();
+                }
             }
-        }
-        if (st2.empty())
-            throw runtime_error("Queue is empty");
-        return st2.top();
+        
+        return s2.top();
+        
     }
-
-    bool empty() const {
-        return st1.empty() && st2.empty();
+    
+    bool empty() {
+        return s1.empty() && s2.empty();
+        
     }
 };
 
