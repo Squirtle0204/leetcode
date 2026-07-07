@@ -1,35 +1,38 @@
-#include <queue>
-using namespace std;
-
 class MyStack {
-private:
-    queue<int> q;
 public:
-    MyStack() = default;
+queue<int>q;
+    MyStack() {
 
+
+        
+    }
+    
     void push(int x) {
+        int s =q.size();
         q.push(x);
-        int n = q.size();
-        for (int i = 1; i < n; i++) {
+        for(int i=0;i<s;i++){
             q.push(q.front());
             q.pop();
+
         }
+        
     }
-
+    
     int pop() {
-        if (q.empty()) throw runtime_error("Stack is empty");
-        int topVal = q.front();
+        int f= q.front();
         q.pop();
-        return topVal;
+        return f;
+        
     }
-
+    
     int top() {
-        if (q.empty()) throw runtime_error("Stack is empty");
         return q.front();
+        
     }
-
-    bool empty() const {
+    
+    bool empty() {
         return q.empty();
+        
     }
 };
 
