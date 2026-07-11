@@ -24,9 +24,7 @@ public:
 
         }
         for(int i=0;i<nums1.size();i++){
-            if(mp.find(nums1[i])!=mp.end()){
                 ans[i]=mp[nums1[i]];
-            }
         }
         return ans;
     }
