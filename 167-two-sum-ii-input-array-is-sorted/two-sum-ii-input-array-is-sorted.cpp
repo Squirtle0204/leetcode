@@ -1,21 +1,14 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int>ans;
-        
-        int left=0,right=nums.size()-1;
+        unordered_map<int,int>st;
 
-        while(left<right){
-           long long sum = nums[left]+ nums[right];
-            if(sum==target){
-                return {left +1, right +1};
-                
+        for(int i =0;i< nums.size();i++){
+            if(st.find(target - nums[i])!=st.end()){
+                return {st[target-nums[i]]+1,i+1};
             }
-            else if (sum>target){
-                right--;
-            }
-            else left++;
-        }
-        return{};
+            st[nums[i]]=i;
+        }  
+        return{};      
     }
 };
