@@ -17,7 +17,7 @@ public:
             }
             
 
-            else if(st.empty() || st.back()<0){
+            else if(st.empty()|| st.back()<0 ){
                 st.push_back(asteroids[i]);
             }
             }
