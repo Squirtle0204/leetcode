@@ -5,12 +5,14 @@ public:
         int count=0;
 
         for(int i=0;i<s.size();i++){
-            while(!st.empty() && st.top()=='b' && s[i]=='a'){
+            if(!st.empty() && st.top()=='b' && s[i]=='a'){
                 count ++;
                 st.pop();
-                i++;
+        
             }
+            else{
             st.push(s[i]);
+            }
         }
         return count;
     }
