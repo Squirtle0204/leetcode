@@ -6,9 +6,8 @@ public:
         for(int i =0;i< s.size();i++){
 
             lastseen[s[i]-'a']=i;
-            if(lastseen[0]!=-1 && lastseen[1]!=-1 && lastseen[2]!=-1){ //this check is only for pratice
                 count = count +(1+ min({lastseen[0],lastseen[1],lastseen[2]}));
-            }
+            
         }
         return count;
     }
