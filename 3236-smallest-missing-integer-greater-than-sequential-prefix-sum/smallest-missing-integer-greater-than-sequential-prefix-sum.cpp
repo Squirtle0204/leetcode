@@ -1,31 +1,26 @@
 class Solution {
 public:
     int missingInteger(vector<int>& nums) {
-        unordered_set<int>st;
-        int prsum=0;
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
 
-
-        for(int i=0;i<nums.size();i++){
-            st.insert(nums[i]);
-
-        }
-        int j=1,i=0;
-        for( i=0;i<nums.size();i++){
-            if(j<nums.size() && nums[j]==nums[i]+1){
+       
+        int prsum = nums[0];
+        for (size_t i = 1; i < nums.size(); ++i) {
+            if (nums[i] == nums[i - 1] + 1) {
                 prsum += nums[i];
-                j++;
+            } else {
+                break; 
             }
-            else break;
-
         }
-        prsum+= nums[i];
 
+      
+        unordered_set<int> st(nums.begin(), nums.end());
 
-         while(st.count(prsum))prsum++;
+        while (st.count(prsum)) {
+            prsum++;
+        }
 
         return prsum;
-
-
-        
     }
 };
