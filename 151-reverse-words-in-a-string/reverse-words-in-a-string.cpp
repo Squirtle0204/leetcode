@@ -1,21 +1,23 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        stringstream ss(s);
-        string word, ans="";
-
-        while(ss>>word){
-            if(ans.empty()){
-                ans = word;
-            }
-            else{
-                ans =  word + " "+ans;
-            }
+        string ans = "";
+        int i = s.size() - 1;
+        
+        while (i >= 0) {
+            // Skip trailing spaces
+            while (i >= 0 && s[i] == ' ') i--;
+            if (i < 0) break;
+            
+            int j = i;
+            // Find start of current word
+            while (i >= 0 && s[i] != ' ') i--;
+            
+            // Append word directly to result
+            if (!ans.empty()) ans += " ";
+            ans.append(s.substr(i + 1, j - i));
         }
+        
         return ans;
-        
-         
-       
-        
     }
 };
