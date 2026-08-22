@@ -1,23 +1,24 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        string ans = "";
-        int i = s.size() - 1;
         
-        while (i >= 0) {
-            // Skip trailing spaces
-            while (i >= 0 && s[i] == ' ') i--;
-            if (i < 0) break;
-            
-            int j = i;
-            // Find start of current word
-            while (i >= 0 && s[i] != ' ') i--;
-            
-            // Append word directly to result
-            if (!ans.empty()) ans += " ";
-            ans.append(s.substr(i + 1, j - i));
+        stringstream ss(s);
+        vector<string>words;
+        string ans="";
+        string word;
+
+
+        while(ss>>word){
+            words.push_back(word);
         }
-        
+
+        for(int i=words.size()-1;i>=0;i--){
+            if(!ans.empty())
+                ans += " ";
+
+          ans +=words[i];
+            
+        }
         return ans;
-    }
+    } 
 };
