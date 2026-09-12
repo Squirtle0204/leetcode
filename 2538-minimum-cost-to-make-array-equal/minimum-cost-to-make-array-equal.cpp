@@ -1,34 +1,35 @@
 class Solution {
 public:
     long long minCost(vector<int>& nums, vector<int>& cost) {
-        int n = nums.size();
-        vector<pair<int,int>>vec(n);
-        long long totalcost=0;
+        long long totalcost = 0;
+        vector<pair<int,int>>vec(nums.size());
+        
 
-        for(int i=0;i<n;i++){
+        for(int i=0;i<nums.size();i++){
             vec[i]={nums[i],cost[i]};
             totalcost +=cost[i];
-
         }
+
         sort(vec.begin(),vec.end());
 
-        //finding target
+        long long currcost=0;
+        int target=0;
 
-       long long currcost=0;
-       int target=0;
-       for(int i =0; i<n; i++){
-           currcost += vec[i].second;
-           if(currcost >=(totalcost+1)/2){
-              target=vec[i].first;
-              break;
-           }
-       }
+        for(auto it : vec){
+            currcost += it.second;
+            if(currcost >=(totalcost+1)/2){
+                target = it.first;
+                break;
 
-       long long totalans=0;
-       for(int i=0; i<n; i++){
-       totalans += 1LL * abs(vec[i].first- target)* vec[i].second;
-       }
-       return totalans;
+            }
+        }
+
+            long long totalans =0;
+
+            for(auto it : vec){
+                totalans += 1LL * abs(it.first-target)*it.second;
+            }
         
+        return totalans;
     }
 };
