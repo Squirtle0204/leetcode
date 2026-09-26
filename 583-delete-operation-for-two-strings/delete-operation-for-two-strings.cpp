@@ -22,8 +22,10 @@ public:
     }
     int minDistance(string word1, string word2) {
         int nn = word1.size();
-        int ans = nn-lcs(word1,word2);
-        ans += word2.size()-lcs(word1,word2);
+        int nnn= word2.size();
+        int ans = nn+nnn - 2*lcs(word1,word2);
+        
+       
         return ans;
         
     }
