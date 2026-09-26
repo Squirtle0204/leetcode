@@ -1,28 +1,21 @@
-#include <vector>
-using namespace std;
-
 class Solution {
 public:
-    void backtrack(int i, vector<int>& nums, vector<vector<int>>& ans, vector<int>& ds) {
-     
-        if (i == nums.size()) {
+    
+    void subsets(int ind,vector<int>&nums,vector<int>&ds,vector<vector<int>>&ans){
             ans.push_back(ds);
-            return;
-        }
-
-       
-        ds.push_back(nums[i]);
-        backtrack(i + 1, nums, ans, ds);
-
-        
-        ds.pop_back();
-        backtrack(i + 1, nums, ans, ds);
+            for(int i=ind;i<nums.size();i++){
+                if(i!=ind && nums[i]==nums[i-1])continue;
+            ds.push_back(nums[i]);
+           subsets(i+1,nums,ds,ans);//pick
+            ds.pop_back();
     }
-
+    }
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>> ans;
-        vector<int> ds;
-        backtrack(0, nums, ans, ds);
+        vector<vector<int>>ans;
+        vector<int>ds;
+        // sort(nums.begin(),nums.end());
+        subsets(0,nums,ds,ans);
         return ans;
+
     }
 };
