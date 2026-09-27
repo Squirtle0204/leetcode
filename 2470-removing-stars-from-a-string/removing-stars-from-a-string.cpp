@@ -2,6 +2,7 @@ class Solution {
 public:
     string removeStars(string s) {
         string ans="";
+        ans.reserve(s.size());
 
         int i = 0;
         while(i<s.size()){
