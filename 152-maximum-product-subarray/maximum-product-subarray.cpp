@@ -6,16 +6,13 @@ public:
         for(int i=1;i<nums.size();i++){
             if(nums[i]<0){
                 swap(maxp,minp);
-                
             }
-            
-            maxp=max(nums[i],maxp * nums[i]);
-            minp=min(nums[i],minp * nums[i]);
-            result=max(result,maxp); 
-            
-            
+
+            maxp = max(nums[i],nums[i]*maxp);
+            minp=min(nums[i],nums[i]*minp);
+            result = max(result,maxp);
+        
         }
         return result;
-        
     }
 };
